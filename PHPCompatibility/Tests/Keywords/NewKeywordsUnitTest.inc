@@ -254,6 +254,15 @@ enum SuitB: string implements Colorful {
   case Spades = 'S';
 }
 
+// Ensure the change in PHP 8.3 in regards to multi-line yield from with comment is handled in
+// a PHPCS cross-version compatible manner and doesn't yield duplicate messages.
+function testYieldFromMultilineWithComment() {
+    yield
+
+        // Comment
+        from [3, 4];
+}
+
 __halt_compiler();
 
 bla();

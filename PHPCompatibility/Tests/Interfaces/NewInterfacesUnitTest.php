@@ -10,6 +10,7 @@
 
 namespace PHPCompatibility\Tests\Interfaces;
 
+use PHP_CodeSniffer\Files\LocalFile;
 use PHPCompatibility\Tests\BaseSniffTestCase;
 
 /**
@@ -79,11 +80,11 @@ class NewInterfacesUnitTest extends BaseSniffTestCase
             ['SessionIdInterface', '5.5.0', [89, 117, 146], '5.6', '5.5'],
             ['Throwable', '5.6', [37, 52, 62, 93, 98, 103, 162, 186], '7.0'],
             ['SessionUpdateTimestampHandlerInterface', '5.6', [90, 142, 162], '7.0'],
-            ['Stringable', '7.4', [112, 179], '8.0'],
-            ['DOMChildNode', '7.4', [196], '8.0'],
-            ['DOMParentNode', '7.4', [196], '8.0'],
-            ['UnitEnum', '8.0', [198], '8.1'],
-            ['BackedEnum', '8.0', [198], '8.1'],
+            ['Stringable', '7.4', [112, 179, 203, 212], '8.0'],
+            ['DOMChildNode', '7.4', [196, 210, 212], '8.0'],
+            ['DOMParentNode', '7.4', [196, 204, 210], '8.0'],
+            ['UnitEnum', '8.0', [198, 211], '8.1'],
+            ['BackedEnum', '8.0', [198, 211], '8.1'],
             ['Random\Engine', '8.1', [200], '8.2'],
             ['Random\CryptoSafeEngine', '8.1', [200], '8.2'],
         ];
@@ -218,7 +219,8 @@ class NewInterfacesUnitTest extends BaseSniffTestCase
             [177],
             [185],
             [189],
-            [205],
+            [208],
+            [219],
         ];
     }
 
@@ -227,4 +229,31 @@ class NewInterfacesUnitTest extends BaseSniffTestCase
      * `testNoViolationsInFileOnValidVersion` test omitted as this sniff will throw an error
      * on invalid use of some magic methods for the Serializable Interface.
      */
+
+    /**
+     * If classes with same name are used in other namespaces, they should not be flagged.
+     *
+     * @return void
+     */
+    public function testNoViolationsInFileIfOtherNamespace()
+    {
+        $file          = $this->sniffFile(__DIR__ . '/NewInterfacesUsesUnitTest.inc', '4.4');
+        $sharedRuleSet = $file->ruleset;
+        $sharedConfig  = $file->config;
+
+        $forgedLocalFile = new LocalFile(
+            \realpath(__DIR__ . '/NewInterfacesUnitTest.inc'),
+            $sharedRuleSet,
+            $sharedConfig
+        );
+        $forgedLocalFile->parse();
+        $forgedLocalFile->process();
+
+        $this->assertNoViolation($file);
+        $this->assertError(
+            $forgedLocalFile,
+            3,
+            'The built-in interface Countable is not present in PHP version 5.0 or earlier'
+        );
+    }
 }

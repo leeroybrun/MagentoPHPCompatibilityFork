@@ -56,6 +56,7 @@ class NewGeneratorReturnUnitTest extends BaseSniffTestCase
             [64],
             [83],
             [101],
+            [159],
         ];
     }
 

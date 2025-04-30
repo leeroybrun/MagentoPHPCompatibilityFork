@@ -10,6 +10,7 @@
 
 namespace PHPCompatibility\Tests\Interfaces;
 
+use PHP_CodeSniffer\Files\LocalFile;
 use PHPCompatibility\Tests\BaseSniffTestCase;
 
 /**
@@ -163,4 +164,31 @@ class InternalInterfacesUnitTest extends BaseSniffTestCase
     /*
      * `testNoViolationsInFileOnValidVersion` test omitted as this sniff is version independent.
      */
+
+    /**
+     * If classes with same name are used in other namespaces, they should not be flagged.
+     *
+     * @return void
+     */
+    public function testNoViolationsInFileIfOtherNamespace()
+    {
+        $file          = $this->sniffFile(__DIR__ . '/InternalInterfacesUsesUnitTest.inc', '4.4');
+        $sharedRuleSet = $file->ruleset;
+        $sharedConfig  = $file->config;
+
+        $forgedLocalFile = new LocalFile(
+            \realpath(__DIR__ . '/InternalInterfacesUnitTest.inc'),
+            $sharedRuleSet,
+            $sharedConfig
+        );
+        $forgedLocalFile->parse();
+        $forgedLocalFile->process();
+
+        $this->assertNoViolation($file);
+        $this->assertError(
+            $forgedLocalFile,
+            3,
+            'The interface Traversable shouldn\'t be implemented directly, implement the Iterator or IteratorAggregate interface instead.'
+        );
+    }
 }

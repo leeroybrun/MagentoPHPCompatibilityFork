@@ -14,7 +14,6 @@ use PHPCompatibility\Helpers\ComplexVersionNewFeatureTrait;
 use PHPCompatibility\Helpers\ScannedCode;
 use PHPCompatibility\Sniff;
 use PHP_CodeSniffer\Files\File;
-use PHP_CodeSniffer\Exceptions\RuntimeException;
 use PHPCSUtils\Utils\FunctionDeclarations;
 use PHPCSUtils\Utils\Scopes;
 use PHPCSUtils\Utils\Variables;
@@ -28,6 +27,7 @@ use PHPCSUtils\Utils\Variables;
  * - Since PHP 8.1, intersection types are supported for class/interface names.
  * - Since PHP 8.2, `false` and `null` can be used as stand-alone types.
  * - Since PHP 8.2, the `true` sub-type is available.
+ * - Since PHP 8.2, disjunctive normal form types are available.
  *
  * PHP version 7.4+
  *
@@ -38,6 +38,7 @@ use PHPCSUtils\Utils\Variables;
  * @link https://wiki.php.net/rfc/pure-intersection-types
  * @link https://wiki.php.net/rfc/null-false-standalone-types
  * @link https://wiki.php.net/rfc/true-type
+ * @link https://wiki.php.net/rfc/dnf_types
  *
  * @since 9.2.0
  */
@@ -86,7 +87,7 @@ class NewTypedPropertiesSniff extends Sniff
     ];
 
     /**
-     * Invalid types.
+     * Invalid types. These will throw an error.
      *
      * The array lists : the invalid type => what was probably intended/alternative
      * or false if no alternative available.
@@ -96,11 +97,24 @@ class NewTypedPropertiesSniff extends Sniff
      * @var array<string, string|false>
      */
     protected $invalidTypes = [
-        'boolean'  => 'bool',
-        'integer'  => 'int',
         'callable' => false,
         'void'     => false,
         'never'    => false,
+    ];
+
+    /**
+     * Invalid "long" types which are likely typos. These will throw a warning.
+     *
+     * The array lists : the invalid type => what was probably intended/alternative
+     * or false if no alternative available.
+     *
+     * @since 10.0.0
+     *
+     * @var array<string, string|false>
+     */
+    protected $invalidLongTypes = [
+        'boolean' => 'bool',
+        'integer' => 'int',
     ];
 
     /**
@@ -162,7 +176,7 @@ class NewTypedPropertiesSniff extends Sniff
 
             $this->checkType($phpcsFile, $properties['type_token'], $properties);
 
-            $endOfStatement = $phpcsFile->findNext(\T_SEMICOLON, ($stackPtr + 1));
+            $endOfStatement = $phpcsFile->findNext([\T_SEMICOLON, \T_CLOSE_TAG], ($stackPtr + 1));
             if ($endOfStatement !== false) {
                 // Don't throw the same error multiple times for multi-property declarations.
                 return ($endOfStatement + 1);
@@ -240,9 +254,10 @@ class NewTypedPropertiesSniff extends Sniff
                 [$origType]
             );
         } else {
-            $types              = \preg_split('`[|&]`', $type, -1, \PREG_SPLIT_NO_EMPTY);
-            $isUnionType        = (\strpos($type, '|') !== false);
-            $isIntersectionType = (\strpos($type, '&') !== false);
+            $types              = \preg_split('`[|&()]`', $type, -1, \PREG_SPLIT_NO_EMPTY);
+            $isUnionType        = (\strpos($type, '|') !== false && \strpos($type, '(') === false);
+            $isIntersectionType = (\strpos($type, '&') !== false && \strpos($type, '(') === false);
+            $isDNFType          = \strpos($type, '(') !== false;
 
             if (ScannedCode::shouldRunOnOrBelow('7.4') === true && $isUnionType === true) {
                 $phpcsFile->addError(
@@ -258,6 +273,15 @@ class NewTypedPropertiesSniff extends Sniff
                     'Intersection types are not present in PHP version 8.0 or earlier. Found: %s',
                     $typeToken,
                     'IntersectionTypeFound',
+                    [$origType]
+                );
+            }
+
+            if (ScannedCode::shouldRunOnOrBelow('8.1') === true && $isDNFType === true) {
+                $phpcsFile->addError(
+                    'Disjunctive Normal Form types are not present in PHP version 8.1 or earlier. Found: %s',
+                    $typeToken,
+                    'DNFTypeFound',
                     [$origType]
                 );
             }
@@ -295,16 +319,31 @@ class NewTypedPropertiesSniff extends Sniff
                             [$type]
                         );
                     }
-                } elseif (isset($this->invalidTypes[$type])) {
-                    $error = '%s is not supported as a type declaration for properties' . $errorSuffix;
-                    $data  = [$type];
+                } else {
+                    if (isset($this->invalidTypes[$type])) {
+                        $error = '%s is not supported as a property type declaration' . $errorSuffix;
+                        $data  = [$type];
 
-                    if ($this->invalidTypes[$type] !== false) {
-                        $error .= '. Did you mean %s ?';
-                        $data[] = $this->invalidTypes[$type];
+                        if ($this->invalidTypes[$type] !== false) {
+                            $error .= '. Did you mean %s ?';
+                            $data[] = $this->invalidTypes[$type];
+                        }
+
+                        $phpcsFile->addError($error, $typeToken, 'InvalidType', $data);
+                        continue;
                     }
 
-                    $phpcsFile->addError($error, $typeToken, 'InvalidType', $data);
+                    if (isset($this->invalidLongTypes[$type])) {
+                        $error = '%s is not supported as a property type declaration' . $errorSuffix;
+                        $data  = [$type];
+
+                        if ($this->invalidLongTypes[$type] !== false) {
+                            $error .= '. Did you mean %s ?';
+                            $data[] = $this->invalidLongTypes[$type];
+                        }
+
+                        $phpcsFile->addWarning($error, $typeToken, 'InvalidLongType', $data);
+                    }
                 }
             }
         }

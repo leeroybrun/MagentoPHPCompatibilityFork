@@ -149,3 +149,12 @@ function nestedEnumReturn() {
 
     yield 20;
 }
+
+// Ensure no duplicate errors will be thrown when "yield from" is multiple tokens.
+$generator = function () {
+    yield
+        /*comment*/
+        from
+        bar();
+    return $foo;
+}

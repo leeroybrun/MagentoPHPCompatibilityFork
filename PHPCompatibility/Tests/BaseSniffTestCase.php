@@ -11,7 +11,11 @@
 namespace PHPCompatibility\Tests;
 
 use PHPUnit\Framework\TestCase;
+use PHP_CodeSniffer\Config;
 use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Files\LocalFile;
+use PHP_CodeSniffer\Ruleset;
+use PHP_CodeSniffer\Util\Common;
 use PHPCSUtils\BackCompat\Helper;
 use Yoast\PHPUnitPolyfills\Polyfills\AssertStringContains;
 
@@ -48,7 +52,7 @@ abstract class BaseSniffTestCase extends TestCase
      *
      * @since 7.0.4
      *
-     * @var array<string, array<string, File>>
+     * @var array<string, array<string, \PHP_CodeSniffer\Files\File>>
      */
     public static $sniffFiles = [];
 
@@ -105,12 +109,7 @@ abstract class BaseSniffTestCase extends TestCase
      */
     protected function getSniffCode()
     {
-        $class    = \get_class($this);
-        $parts    = \explode('\\', $class);
-        $sniff    = \array_pop($parts);
-        $sniff    = \str_replace('UnitTest', '', $sniff);
-        $category = \array_pop($parts);
-        return self::STANDARD_NAME . '.' . $category . '.' . $sniff;
+        return Common::getSniffCode(\get_class($this));
     }
 
     /**
@@ -145,7 +144,7 @@ abstract class BaseSniffTestCase extends TestCase
         if (isset(self::$sniffFiles[$pathToFile]['only_parsed']) === false) {
             try {
                 // PHPCS 3.x, 4.x.
-                $config            = new \PHP_CodeSniffer\Config();
+                $config            = new Config();
                 $config->cache     = false;
                 $config->standards = [self::STANDARD_NAME];
                 $config->sniffs    = [$this->getSniffCode()];
@@ -153,9 +152,9 @@ abstract class BaseSniffTestCase extends TestCase
 
                 self::$lastConfig = $config;
 
-                $ruleset = new \PHP_CodeSniffer\Ruleset($config);
+                $ruleset = new Ruleset($config);
 
-                self::$sniffFiles[$pathToFile]['only_parsed'] = new \PHP_CodeSniffer\Files\LocalFile($pathToFile, $ruleset, $config);
+                self::$sniffFiles[$pathToFile]['only_parsed'] = new LocalFile($pathToFile, $ruleset, $config);
                 self::$sniffFiles[$pathToFile]['only_parsed']->parse();
             } catch (\Exception $e) {
                 $this->fail('An unexpected exception has been caught when parsing file "' . $pathToFile . '" : ' . $e->getMessage());

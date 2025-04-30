@@ -32,7 +32,7 @@ class NewConstantsSniff extends Sniff
      * A list of new PHP Constants, not present in older versions.
      *
      * The array lists : version number with false (not present) or true (present).
-     * If's sufficient to list the first version where the constant appears.
+     * It's sufficient to list the first version where the constant appears.
      *
      * Note: PHP constants are case-sensitive!
      *
@@ -6802,6 +6802,7 @@ class NewConstantsSniff extends Sniff
             '7.3' => false,
             '7.4' => true,
         ],
+        // Note: this constant has special casing in the handleFeature() method as it was also present in PHP < 7.0.
         'T_BAD_CHARACTER' => [
             '7.3'       => false,
             '7.4'       => true,
@@ -7826,26 +7827,6 @@ class NewConstantsSniff extends Sniff
             '8.3'       => true,
             'extension' => 'pgsql',
         ],
-        'PGSQL_PIPELINE_SYNC' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
-        'PGSQL_PIPELINE_ON' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
-        'PGSQL_PIPELINE_OFF' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
-        'PGSQL_PIPELINE_ABORTED' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
         'PGSQL_SHOW_CONTEXT_NEVER' => [
             '8.2'       => false,
             '8.3'       => true,
@@ -8041,6 +8022,320 @@ class NewConstantsSniff extends Sniff
             '8.3'       => true,
             'extension' => 'sockets',
         ],
+
+        'PHP_OUTPUT_HANDLER_PROCESSED' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'PHP_SBINDIR' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'CURL_HTTP_VERSION_3' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURL_HTTP_VERSION_3ONLY' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLOPT_PREREQFUNCTION' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLOPT_SERVER_RESPONSE_TIMEOUT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLOPT_TCP_KEEPCNT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURL_PREREQFUNC_ABORT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURL_PREREQFUNC_OK' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLOPT_DEBUGFUNCTION' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_TEXT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_HEADER_IN' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_DATA_IN' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_DATA_OUT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_SSL_DATA_OUT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_SSL_DATA_IN' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'CURLINFO_POSTTRANSFER_TIME_T' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'curl',
+        ],
+        'LDAP_OPT_X_TLS_PROTOCOL_MAX' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'ldap',
+        ],
+        'LDAP_OPT_X_TLS_PROTOCOL_TLS1_3' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'ldap',
+        ],
+        'LIBXML_RECOVER' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'libxml',
+        ],
+        'LIBXML_NO_XXE' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'libxml',
+        ],
+        'MYSQLI_TYPE_VECTOR' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'mysqli',
+        ],
+        'X509_PURPOSE_OCSP_HELPER' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'openssl',
+        ],
+        'X509_PURPOSE_TIMESTAMP_SIGN' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'openssl',
+        ],
+        'SIGCKPT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'SIGCKPTEXIT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'WEXITED' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'WSTOPPED' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'WNOWAIT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_ALL' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_PID' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_PGID' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_PIDFD' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_UID' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_GID' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_SID' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'P_JAILID' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'PGSQL_TUPLES_CHUNK' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'POSIX_SC_CHILD_MAX' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'posix',
+        ],
+        'POSIX_SC_CLK_TCK' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'posix',
+        ],
+        'IP_PORTRANGE' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'IP_PORTRANGE_DEFAULT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'IP_PORTRANGE_HIGH' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'IP_PORTRANGE_LOW' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SO_BINDTOIFINDEX' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SO_EXCLBIND' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SO_EXCLUSIVEADDRUSE' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SO_LINGER_SEC' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SO_NOSIGPIPE' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SOCK_CLOEXEC' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SOCK_CONN_DGRAM' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SOCK_DCCP' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SOCK_NONBLOCK' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'TCP_SYNCNT' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sockets',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS128L_KEYBYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS128L_NSECBYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS128L_NPUBBYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS128L_ABYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS256_KEYBYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS256_NSECBYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS256_NPUBBYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'SODIUM_CRYPTO_AEAD_AEGIS256_ABYTES' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'XML_OPTION_PARSE_HUGE' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'xml',
+        ],
     ];
 
 
@@ -8108,6 +8403,19 @@ class NewConstantsSniff extends Sniff
         if (empty($versionInfo['not_in_version'])
             || ScannedCode::shouldRunOnOrBelow($versionInfo['not_in_version']) === false
         ) {
+            return;
+        }
+
+        if ($itemInfo['name'] === 'T_BAD_CHARACTER') {
+            // T_BAD_CHARACTER is a special case. It was removed in 7.0.0 and re-added in 7.4.0
+            // See also PHPCompatibility.Constants.RemovedConstants
+            if (ScannedCode::shouldRunOnOrAbove('7.0')) {
+                $message = 'The constant "T_BAD_CHARACTER" is not present in PHP versions 7.0 through 7.3';
+                $msgInfo = $this->getMessageInfo($itemInfo['name'], $itemInfo['name'], $versionInfo);
+
+                $phpcsFile->addError($message, $stackPtr, $msgInfo['errorcode'], $msgInfo['data']);
+            }
+
             return;
         }
 

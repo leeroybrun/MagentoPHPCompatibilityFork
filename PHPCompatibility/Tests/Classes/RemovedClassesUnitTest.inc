@@ -101,3 +101,26 @@ class IntersectionTypes {
     public function paramType(SWFSprite&\SWFText $param) {}
     public function returnType($param) : HW_API_Object&HW_API_Attribute {}
 }
+
+function CheckAllTypeParts(
+    NotATarget|SWFButton $a
+) : NotATarget|SQLiteException {}
+
+// Test support for PHP 8.2 DNF types.
+class DNFTypes {
+    public function paramTypeA(NotATarget&AlsoNotATarget $okay) {}
+
+    public int|(SWFMorph&SWFMovie) $property;
+    public function paramTypeB((SWFSprite&\SWFText)|false $param) {}
+    public function returnType($param) : SomethingElse|(HW_API_Object&HW_API_Attribute) {}
+}
+
+function mailMe(): IMAP\Connection {}
+
+$oci8 = new OCICollection();
+$closure = function(OCILob $lob) {};
+
+function my_pspell(
+    PSpell\Config $config,
+    PSpell\Dictionary $dictionary,
+) {}

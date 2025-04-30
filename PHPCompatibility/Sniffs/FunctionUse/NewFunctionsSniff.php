@@ -4943,26 +4943,6 @@ class NewFunctionsSniff extends Sniff
             '8.3'       => true,
             'extension' => 'pgsql',
         ],
-        'pg_enter_pipeline_mode' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
-        'pg_exit_pipeline_mode' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
-        'pg_pipeline_sync' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
-        'pg_pipeline_status' => [
-            '8.2'       => false,
-            '8.3'       => true,
-            'extension' => 'pgsql',
-        ],
         'posix_sysconf' => [
             '8.2'       => false,
             '8.3'       => true,
@@ -4987,6 +4967,204 @@ class NewFunctionsSniff extends Sniff
             '8.2'       => false,
             '8.3'       => true,
             'extension' => 'sockets',
+        ],
+
+        'array_all' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'array_any' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'array_find' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'array_find_key' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'fpow' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'http_clear_last_response_header' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'http_get_last_response_header' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'request_parse_body' => [
+            '8.3' => false,
+            '8.4' => true,
+        ],
+        'bcceil' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'bcmath',
+        ],
+        'bcdivmod' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'bcmath',
+        ],
+        'bcfloor' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'bcmath',
+        ],
+        'bcround' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'bcmath',
+        ],
+        'grapheme_str_split' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'intl',
+        ],
+        'mb_lcfirst' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'mbstring',
+        ],
+        'mb_ucfirst' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'mbstring',
+        ],
+        'mb_ltrim' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'mbstring',
+        ],
+        'mb_rtrim' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'mbstring',
+        ],
+        'mb_trim' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'mbstring',
+        ],
+        'opcache_jit_blacklist' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'opcache',
+        ],
+        'openssl_password_hash' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'openssl',
+        ],
+        'openssl_password_verify' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'openssl',
+        ],
+        'pcntl_getcpu' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pcntl_getcpuaffinity' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pcntl_getqos_class' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pcntl_setcpuaffinity' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pcntl_setns' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pcntl_setqos' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pcntl_waitid' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pcntl',
+        ],
+        'pg_change_password' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'pg_jit' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'pg_put_copy_data' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'pg_put_copy_end' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'pg_result_memory_size' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'pg_set_chunked_rows_size' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'pg_socket_poll' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'pgsql',
+        ],
+        'sodium_crypto_aead_aegis128l_decrypt' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'sodium_crypto_aead_aegis128l_encrypt' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'sodium_crypto_aead_aegis128l_keygen' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'sodium_crypto_aead_aegis256_decrypt' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'sodium_crypto_aead_aegis256_encrypt' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
+        ],
+        'sodium_crypto_aead_aegis256_keygen' => [
+            '8.3'       => false,
+            '8.4'       => true,
+            'extension' => 'sodium',
         ],
     ];
 

@@ -10,6 +10,7 @@
 
 namespace PHPCompatibility\Tests\Classes;
 
+use PHP_CodeSniffer\Files\LocalFile;
 use PHPCompatibility\Tests\BaseSniffTestCase;
 
 /**
@@ -134,7 +135,7 @@ class NewClassesUnitTest extends BaseSniffTestCase
             ['RecursiveCachingIterator', '5.0', [297], '5.1'],
             ['RecursiveFilterIterator', '5.0', [298], '5.1'],
             ['SimpleXMLIterator', '5.0', [311], '5.1'],
-            ['XMLReader', '5.0', [312, 336], '5.1'],
+            ['XMLReader', '5.0', [312, 336, 488], '5.1'],
             ['SplFileObject', '5.0', [302, 336], '5.1'],
             ['SplObjectStorage', '5.0', [282], '5.1'],
             ['SplFileInfo', '5.1.1', [303], '5.2', '5.1'],
@@ -192,18 +193,18 @@ class NewClassesUnitTest extends BaseSniffTestCase
             ['IntlBreakIterator', '5.4', [58, 98, 138], '5.5'],
             ['IntlRuleBasedBreakIterator', '5.4', [59, 99, 139], '5.5'],
             ['IntlCodePointBreakIterator', '5.4', [60, 100, 140], '5.5'],
-            ['IntlPartsIterator', '5.4', [351, 464], '5.5'],
-            ['IntlIterator', '5.4', [352, 464], '5.5'],
+            ['IntlPartsIterator', '5.4', [351, 464, 495], '5.5'],
+            ['IntlIterator', '5.4', [352, 464, 495], '5.5'],
             ['UConverter', '5.4', [276], '5.5'],
             ['GMP', '5.5', [281], '5.6'],
             ['IntlChar', '5.6', [277, 448], '7.0'],
-            ['ReflectionType', '5.6', [308], '7.0'],
+            ['ReflectionType', '5.6', [308, 489], '7.0'],
             ['ReflectionGenerator', '5.6', [309], '7.0'],
-            ['ReflectionClassConstant', '7.0', [306, 465], '7.1'],
-            ['ReflectionNamedType', '7.0', [359, 465], '7.1'],
+            ['ReflectionClassConstant', '7.0', [306, 465, 496], '7.1'],
+            ['ReflectionNamedType', '7.0', [359, 465, 496], '7.1'],
             ['FFI', '7.3', [346], '7.4'],
-            ['FFI\CData', '7.3', [347, 466], '7.4'],
-            ['FFI\CType', '7.3', [347, 466], '7.4'],
+            ['FFI\CData', '7.3', [347, 466, 497], '7.4'],
+            ['FFI\CType', '7.3', [347, 466, 497], '7.4'],
             ['ReflectionReference', '7.3', [344, 455], '7.4'],
             ['WeakReference', '7.3', [345, 455], '7.4'],
             ['PhpToken', '7.4', [415], '8.0'],
@@ -212,6 +213,25 @@ class NewClassesUnitTest extends BaseSniffTestCase
             ['OCICollection', '7.4', [424, 456], '8.0'],
             ['OCILob', '7.4', [425, 456], '8.0'],
             ['Attribute', '7.4', [431, 444], '8.0'],
+            ['CurlHandle', '7.4', [501], '8.0'],
+            ['CurlMultiHandle', '7.4', [502], '8.0'],
+            ['CurlShareHandle', '7.4', [503], '8.0'],
+            ['EnchantBroker', '7.4', [506], '8.0'],
+            ['EnchantDictionary', '7.4', [506], '8.0'],
+            ['GdImage', '7.4', [507], '8.0'],
+            ['OpenSSLCertificate', '7.4', [510], '8.0'],
+            ['OpenSSLCertificateSigningRequest', '7.4', [511], '8.0'],
+            ['OpenSSLAsymmetricKey', '7.4', [512], '8.0'],
+            ['Shmop', '7.4', [515], '8.0'],
+            ['AddressInfo', '7.4', [516], '8.0'],
+            ['Socket', '7.4', [516], '8.0'],
+            ['SysvMessageQueue', '7.4', [517], '8.0'],
+            ['SysvSemaphore', '7.4', [518], '8.0'],
+            ['SysvSharedMemory', '7.4', [519], '8.0'],
+            ['XMLParser', '7.4', [520], '8.0'],
+            ['InflateContext', '7.4', [523], '8.0'],
+            ['DeflateContext', '7.4', [524], '8.0'],
+
             ['IntlDatePatternGenerator', '8.0', [433], '8.1'],
             ['Fiber', '8.0', [435, 449], '8.1'],
             ['ReflectionEnum', '8.0', [470], '8.1'],
@@ -220,11 +240,38 @@ class NewClassesUnitTest extends BaseSniffTestCase
             ['ReflectionFiber', '8.0', [436], '8.1'],
             ['ReflectionIntersectionType', '8.0', [469], '8.1'],
             ['CURLStringFile', '8.0', [438], '8.1'],
+            ['FTP\Connection', '8.0', [527], '8.1'],
+            ['GdFont', '8.0', [528], '8.1'],
+            ['IMAP\Connection', '8.0', [529], '8.1'],
+            ['LDAP\Connection', '8.0', [531], '8.1'],
+            ['LDAP\Result', '8.0', [532], '8.1'],
+            ['LDAP\ResultEntry', '8.0', [533], '8.1'],
+            ['PgSql\Connection', '8.0', [536], '8.1'],
+            ['PgSql\Lob', '8.0', [537], '8.1'],
+            ['PgSql\Result', '8.0', [538], '8.1'],
+            ['PSpell\Config', '8.0', [541], '8.1'],
+            ['PSpell\Dictionary', '8.0', [542], '8.1'],
+
             ['Random\Randomizer', '8.1', [474], '8.2'],
             ['Random\Engine\Mt19937', '8.1', [475], '8.2'],
             ['Random\Engine\PcgOneseq128XslRr64', '8.1', [476], '8.2'],
             ['Random\Engine\Xoshiro256StarStar', '8.1', [477], '8.2'],
             ['Random\Engine\Secure', '8.1', [479], '8.2'],
+
+            ['Dba\Connection', '8.3', [545], '8.4'],
+            ['Odbc\Connection', '8.3', [546], '8.4'],
+            ['Odbc\Result', '8.3', [546], '8.4'],
+            ['Soap\Sdl', '8.3', [547], '8.4'],
+            ['Soap\Url', '8.3', [547], '8.4'],
+            ['StreamBucket', '8.3', [548], '8.4'],
+            ['Pdo\DbLib', '8.3', [550], '8.4'],
+            ['Pdo\Firebird', '8.3', [551], '8.4'],
+            ['Pdo\Mysql', '8.3', [552], '8.4'],
+            ['Pdo\Odbc', '8.3', [553], '8.4'],
+            ['Pdo\Pgsql', '8.3', [554], '8.4'],
+            ['Pdo\Sqlite', '8.3', [556], '8.4'],
+            ['BcMath\Number', '8.3', [561], '8.4'],
+            ['ReflectionConstant', '8.3', [562], '8.4'],
 
             ['DATETIME', '5.1', [146], '5.2'],
             ['datetime', '5.1', [147, 320], '5.2'],
@@ -275,6 +322,7 @@ class NewClassesUnitTest extends BaseSniffTestCase
             ['Random\RandomError', '8.1', [481], '8.2'],
             ['Random\BrokenRandomEngineError', '8.1', [481], '8.2'],
             ['Random\RandomException', '8.1', [482], '8.2'],
+            ['RequestParseBodyException', '8.3', [559], '8.4'],
         ];
     }
 
@@ -320,6 +368,7 @@ class NewClassesUnitTest extends BaseSniffTestCase
             [441],
             [453],
             [462],
+            [493],
         ];
     }
 
@@ -333,5 +382,32 @@ class NewClassesUnitTest extends BaseSniffTestCase
     {
         $file = $this->sniffFile(__FILE__, '99.0'); // High version beyond newest addition.
         $this->assertNoViolation($file);
+    }
+
+    /**
+     * If classes with same name are used in other namespaces, they should not be flagged.
+     *
+     * @return void
+     */
+    public function testNoViolationsInFileIfOtherNamespace()
+    {
+        $file          = $this->sniffFile(__DIR__ . '/NewClassesUsesUnitTest.inc', '4.4');
+        $sharedRuleSet = $file->ruleset;
+        $sharedConfig  = $file->config;
+
+        $forgedLocalFile = new LocalFile(
+            \realpath(__DIR__ . '/NewClassesUsesNoLeakUnitTest.inc'),
+            $sharedRuleSet,
+            $sharedConfig
+        );
+        $forgedLocalFile->parse();
+        $forgedLocalFile->process();
+
+        $this->assertNoViolation($file);
+        $this->assertError(
+            $forgedLocalFile,
+            3,
+            'The built-in class ArrayObject is not present in PHP version 4.4 or earlier'
+        );
     }
 }

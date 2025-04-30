@@ -102,6 +102,12 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
             [160],
             [161],
             [165],
+            [170],
+            [175],
+            [176],
+            [179],
+            [182],
+            [185],
         ];
     }
 
@@ -160,7 +166,7 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
     public function testInvalidPropertyType($line, $type)
     {
         $file = $this->sniffFile(__FILE__, '7.4');
-        $this->assertError($file, $line, "$type is not supported as a type declaration for properties");
+        $this->assertError($file, $line, "$type is not supported as a property type declaration");
     }
 
     /**
@@ -176,11 +182,41 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
             [62, 'void'],
             [63, 'callable'],
             [64, 'callable'],
-            [65, 'boolean'],
-            [66, 'integer'],
             [117, 'callable'],
             [160, 'never'],
             [161, 'never'],
+        ];
+    }
+
+
+    /**
+     * Verify that invalid "long" type declarations are flagged correctly.
+     *
+     * @dataProvider dataInvalidLongType
+     *
+     * @param int    $line The line number on which the error should occur.
+     * @param string $type The invalid type which should be detected.
+     *
+     * @return void
+     */
+    public function testInvalidLongType($line, $type)
+    {
+        $file = $this->sniffFile(__FILE__, '7.4');
+        $this->assertWarning($file, $line, "$type is not supported as a property type declaration");
+    }
+
+    /**
+     * Data provider.
+     *
+     * @see testInvalidLongType()
+     *
+     * @return array
+     */
+    public static function dataInvalidLongType()
+    {
+        return [
+            [65, 'boolean'],
+            [66, 'integer'],
         ];
     }
 
@@ -230,6 +266,7 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
             ['false', '7.4', 99, '8.0'],
             ['mixed', '7.4', 116, '8.0', false],
             ['true', '8.1', 147, '8.2'],
+            ['null', '7.4', 175, '8.2'],
         ];
     }
 
@@ -295,7 +332,7 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
             ['MyClassA|\Package\MyClassB', 80],
             ['array|bool|int|float|NULL|object|string', 81],
             ['false|mixed|self|parent|iterable|Resource', 84],
-            ['callable||void', 87, false],
+            ['callable|void', 87, false],
             ['?int|float', 90],
             ['bool|FALSE', 99],
             ['object|ClassName', 102],
@@ -337,6 +374,7 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
         return [
             [93, 'null'],
             [96, 'false'],
+            [175, 'null'],
         ];
     }
 
@@ -378,14 +416,12 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
      *
      * @dataProvider dataNewIntersectionTypes
      *
-     * @param string $type            The declared type.
-     * @param int    $line            The line number where the error is expected.
-     * @param bool   $testNoViolation Whether or not to test noViolation.
-     *                                Defaults to true.
+     * @param string $type The declared type.
+     * @param int    $line The line number where the error is expected.
      *
      * @return void
      */
-    public function testNewIntersectionTypes($type, $line, $testNoViolation = true)
+    public function testNewIntersectionTypes($type, $line)
     {
         $file = $this->sniffFile(__FILE__, '8.0');
         $this->assertError($file, $line, "Intersection types are not present in PHP version 8.0 or earlier. Found: $type");
@@ -410,6 +446,44 @@ class NewTypedPropertiesUnitTest extends BaseSniffTestCase
             ['self&\Fully\Qualified\SomeInterface', 138],
             ['Qualified\SomeInterface&parent', 139],
             ['A&B&A', 142],
+        ];
+    }
+
+
+    /**
+     * Verify that an error is thrown for DNF types.
+     *
+     * @dataProvider dataNewDNFTypes
+     *
+     * @param string $type The declared type.
+     * @param int    $line The line number where the error is expected.
+     *
+     * @return void
+     */
+    public function testNewDNFTypes($type, $line)
+    {
+        $file = $this->sniffFile(__FILE__, '8.1');
+        $this->assertError($file, $line, "Disjunctive Normal Form types are not present in PHP version 8.1 or earlier. Found: $type");
+
+        $file = $this->sniffFile(__FILE__, '8.2');
+        $this->assertNoViolation($file, $line);
+    }
+
+    /**
+     * Data provider.
+     *
+     * @see testNewDNFTypes()
+     *
+     * @return array
+     */
+    public static function dataNewDNFTypes()
+    {
+        return [
+            ['(Foo&Bar)|null', 175],
+            ['(A&B)|(C&D)', 176],
+            ['B&(D|W)', 179],
+            ['(A&B)|(B&A)', 182],
+            ['(A&self)|A', 185],
         ];
     }
 

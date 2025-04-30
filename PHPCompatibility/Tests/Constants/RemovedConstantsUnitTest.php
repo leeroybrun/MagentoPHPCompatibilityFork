@@ -84,6 +84,24 @@ class RemovedConstantsUnitTest extends BaseSniffTestCase
             ['ASSERT_EXCEPTION', '8.3', 649, '8.2'],
             ['ASSERT_WARNING', '8.3', 650, '8.2'],
             ['MT_RAND_PHP', '8.3', 651, '8.2'],
+
+            ['DOM_PHP_ERR', '8.4', 801, '8.3'],
+            ['SUNFUNCS_RET_DOUBLE', '8.4', 802, '8.3'],
+            ['SUNFUNCS_RET_STRING', '8.4', 803, '8.3'],
+            ['SUNFUNCS_RET_TIMESTAMP', '8.4', 804, '8.3'],
+            ['E_STRICT', '8.4', 805, '8.3'],
+            ['SOAP_FUNCTIONS_ALL', '8.4', 806, '8.3'],
+            ['MYSQLI_REFRESH_GRANT', '8.4', 807, '8.3'],
+            ['MYSQLI_REFRESH_LOG', '8.4', 808, '8.3'],
+            ['MYSQLI_REFRESH_TABLES', '8.4', 809, '8.3'],
+            ['MYSQLI_REFRESH_HOSTS', '8.4', 810, '8.3'],
+            ['MYSQLI_REFRESH_REPLICA', '8.4', 811, '8.3'],
+            ['MYSQLI_REFRESH_STATUS', '8.4', 812, '8.3'],
+            ['MYSQLI_REFRESH_THREADS', '8.4', 813, '8.3'],
+            ['MYSQLI_REFRESH_SLAVE', '8.4', 814, '8.3'],
+            ['MYSQLI_REFRESH_MASTER', '8.4', 815, '8.3'],
+            ['MYSQLI_REFRESH_BACKUP_LOG', '8.4', 816, '8.3'],
+            ['CURLOPT_BINARYTRANSFER', '8.4', 817, '8.3'],
         ];
     }
 
@@ -124,7 +142,6 @@ class RemovedConstantsUnitTest extends BaseSniffTestCase
     {
         return [
             ['PG_VERSION_STR', '8.0', 'PG_VERSION', 624, '7.4'],
-            ['NIL', '8.1', 'integer 0', 631, '8.0'],
             ['U_MULTIPLE_DECIMAL_SEPERATORS', '8.3', 'U_MULTIPLE_DECIMAL_SEPARATORS', 652, '8.2'],
         ];
     }
@@ -631,7 +648,6 @@ class RemovedConstantsUnitTest extends BaseSniffTestCase
 
             ['PGSQL_ATTR_DISABLE_NATIVE_PREPARED_STATEMENT', '7.0', 15, '5.6'],
             ['T_CHARACTER', '7.0', 139, '5.6'],
-            ['T_BAD_CHARACTER', '7.0', 140, '5.6'],
             ['MSSQL_ASSOC', '7.0', 557, '5.6'],
             ['MSSQL_NUM', '7.0', 558, '5.6'],
             ['MSSQL_BOTH', '7.0', 559, '5.6'],
@@ -719,6 +735,156 @@ class RemovedConstantsUnitTest extends BaseSniffTestCase
             ['MB_OVERLOAD_MAIL', '8.0', 620, '7.4'],
             ['MB_OVERLOAD_STRING', '8.0', 621, '7.4'],
             ['MB_OVERLOAD_REGEX', '8.0', 622, '7.4'],
+
+            ['OP_DEBUG', '8.4', 654, '8.3'],
+            ['OP_READONLY', '8.4', 655, '8.3'],
+            ['OP_ANONYMOUS', '8.4', 656, '8.3'],
+            ['OP_SHORTCACHE', '8.4', 657, '8.3'],
+            ['OP_SILENT', '8.4', 658, '8.3'],
+            ['OP_PROTOTYPE', '8.4', 659, '8.3'],
+            ['OP_HALFOPEN', '8.4', 660, '8.3'],
+            ['OP_EXPUNGE', '8.4', 661, '8.3'],
+            ['OP_SECURE', '8.4', 662, '8.3'],
+            ['CL_EXPUNGE', '8.4', 663, '8.3'],
+            ['FT_UID', '8.4', 664, '8.3'],
+            ['FT_PEEK', '8.4', 665, '8.3'],
+            ['FT_NOT', '8.4', 666, '8.3'],
+            ['FT_INTERNAL', '8.4', 667, '8.3'],
+            ['FT_PREFETCHTEXT', '8.4', 668, '8.3'],
+            ['ST_UID', '8.4', 669, '8.3'],
+            ['ST_SILENT', '8.4', 670, '8.3'],
+            ['ST_SET', '8.4', 671, '8.3'],
+            ['CP_UID', '8.4', 672, '8.3'],
+            ['CP_MOVE', '8.4', 673, '8.3'],
+            ['SE_UID', '8.4', 674, '8.3'],
+            ['SE_FREE', '8.4', 675, '8.3'],
+            ['SE_NOPREFETCH', '8.4', 676, '8.3'],
+            ['SO_FREE', '8.4', 677, '8.3'],
+            ['SO_NOSERVER', '8.4', 678, '8.3'],
+            ['SA_MESSAGES', '8.4', 679, '8.3'],
+            ['SA_RECENT', '8.4', 680, '8.3'],
+            ['SA_UNSEEN', '8.4', 681, '8.3'],
+            ['SA_UIDNEXT', '8.4', 682, '8.3'],
+            ['SA_UIDVALIDITY', '8.4', 683, '8.3'],
+            ['SA_ALL', '8.4', 684, '8.3'],
+            ['LATT_NOINFERIORS', '8.4', 685, '8.3'],
+            ['LATT_NOSELECT', '8.4', 686, '8.3'],
+            ['LATT_MARKED', '8.4', 687, '8.3'],
+            ['LATT_UNMARKED', '8.4', 688, '8.3'],
+            ['LATT_REFERRAL', '8.4', 689, '8.3'],
+            ['LATT_HASCHILDREN', '8.4', 690, '8.3'],
+            ['LATT_HASNOCHILDREN', '8.4', 691, '8.3'],
+            ['SORTDATE', '8.4', 692, '8.3'],
+            ['SORTARRIVAL', '8.4', 693, '8.3'],
+            ['SORTFROM', '8.4', 694, '8.3'],
+            ['SORTSUBJECT', '8.4', 695, '8.3'],
+            ['SORTTO', '8.4', 696, '8.3'],
+            ['SORTCC', '8.4', 697, '8.3'],
+            ['SORTSIZE', '8.4', 698, '8.3'],
+            ['TYPETEXT', '8.4', 699, '8.3'],
+            ['TYPEMULTIPART', '8.4', 700, '8.3'],
+            ['TYPEMESSAGE', '8.4', 701, '8.3'],
+            ['TYPEAPPLICATION', '8.4', 702, '8.3'],
+            ['TYPEAUDIO', '8.4', 703, '8.3'],
+            ['TYPEIMAGE', '8.4', 704, '8.3'],
+            ['TYPEVIDEO', '8.4', 705, '8.3'],
+            ['TYPEMODEL', '8.4', 706, '8.3'],
+            ['TYPEOTHER', '8.4', 707, '8.3'],
+            ['ENC7BIT', '8.4', 708, '8.3'],
+            ['ENC8BIT', '8.4', 709, '8.3'],
+            ['ENCBINARY', '8.4', 710, '8.3'],
+            ['ENCBASE64', '8.4', 711, '8.3'],
+            ['ENCQUOTEDPRINTABLE', '8.4', 712, '8.3'],
+            ['ENCOTHER', '8.4', 713, '8.3'],
+            ['IMAP_OPENTIMEOUT', '8.4', 714, '8.3'],
+            ['IMAP_READTIMEOUT', '8.4', 715, '8.3'],
+            ['IMAP_WRITETIMEOUT', '8.4', 716, '8.3'],
+            ['IMAP_CLOSETIMEOUT', '8.4', 717, '8.3'],
+            ['IMAP_GC_ELT', '8.4', 718, '8.3'],
+            ['IMAP_GC_ENV', '8.4', 719, '8.3'],
+            ['IMAP_GC_TEXTS', '8.4', 720, '8.3'],
+            ['OCI_ASSOC', '8.4', 722, '8.3'],
+            ['OCI_BOTH', '8.4', 723, '8.3'],
+            ['OCI_COMMIT_ON_SUCCESS', '8.4', 724, '8.3'],
+            ['OCI_CRED_EXT', '8.4', 725, '8.3'],
+            ['OCI_DEFAULT', '8.4', 726, '8.3'],
+            ['OCI_DESCRIBE_ONLY', '8.4', 727, '8.3'],
+            ['OCI_EXACT_FETCH', '8.4', 728, '8.3'],
+            ['OCI_FETCHSTATEMENT_BY_COLUMN', '8.4', 729, '8.3'],
+            ['OCI_FETCHSTATEMENT_BY_ROW', '8.4', 730, '8.3'],
+            ['OCI_LOB_BUFFER_FREE', '8.4', 731, '8.3'],
+            ['OCI_NO_AUTO_COMMIT', '8.4', 732, '8.3'],
+            ['OCI_NUM', '8.4', 733, '8.3'],
+            ['OCI_RETURN_LOBS', '8.4', 734, '8.3'],
+            ['OCI_RETURN_NULLS', '8.4', 735, '8.3'],
+            ['OCI_SEEK_CUR', '8.4', 736, '8.3'],
+            ['OCI_SEEK_END', '8.4', 737, '8.3'],
+            ['OCI_SEEK_SET', '8.4', 738, '8.3'],
+            ['OCI_SYSDATE', '8.4', 739, '8.3'],
+            ['OCI_SYSDBA', '8.4', 740, '8.3'],
+            ['OCI_SYSOPER', '8.4', 741, '8.3'],
+            ['OCI_TEMP_BLOB', '8.4', 742, '8.3'],
+            ['OCI_TEMP_CLOB', '8.4', 743, '8.3'],
+            ['OCI_B_BFILE', '8.4', 744, '8.3'],
+            ['OCI_B_BIN', '8.4', 745, '8.3'],
+            ['OCI_B_BLOB', '8.4', 746, '8.3'],
+            ['OCI_B_BOL', '8.4', 747, '8.3'],
+            ['OCI_B_CFILEE', '8.4', 748, '8.3'],
+            ['OCI_B_CLOB', '8.4', 749, '8.3'],
+            ['OCI_B_CURSOR', '8.4', 750, '8.3'],
+            ['OCI_B_INT', '8.4', 751, '8.3'],
+            ['OCI_B_NTY', '8.4', 752, '8.3'],
+            ['OCI_B_NUM', '8.4', 753, '8.3'],
+            ['OCI_B_ROWID', '8.4', 754, '8.3'],
+            ['SQLT_AFC', '8.4', 755, '8.3'],
+            ['SQLT_AVC', '8.4', 756, '8.3'],
+            ['SQLT_BDOUBLE', '8.4', 757, '8.3'],
+            ['SQLT_BFILEE', '8.4', 758, '8.3'],
+            ['SQLT_BFLOAT', '8.4', 759, '8.3'],
+            ['SQLT_BIN', '8.4', 760, '8.3'],
+            ['SQLT_BLOB', '8.4', 761, '8.3'],
+            ['SQLT_BOL', '8.4', 762, '8.3'],
+            ['SQLT_CFILEE', '8.4', 763, '8.3'],
+            ['SQLT_CHR', '8.4', 764, '8.3'],
+            ['SQLT_CLOB', '8.4', 765, '8.3'],
+            ['SQLT_FLT', '8.4', 766, '8.3'],
+            ['SQLT_INT', '8.4', 767, '8.3'],
+            ['SQLT_LBI', '8.4', 768, '8.3'],
+            ['SQLT_LNG', '8.4', 769, '8.3'],
+            ['SQLT_LVC', '8.4', 770, '8.3'],
+            ['SQLT_NTY', '8.4', 771, '8.3'],
+            ['SQLT_NUM', '8.4', 772, '8.3'],
+            ['SQLT_ODT', '8.4', 773, '8.3'],
+            ['SQLT_RDD', '8.4', 774, '8.3'],
+            ['SQLT_RSET', '8.4', 775, '8.3'],
+            ['SQLT_STR', '8.4', 776, '8.3'],
+            ['SQLT_UIN', '8.4', 777, '8.3'],
+            ['SQLT_VCS', '8.4', 778, '8.3'],
+            ['OCI_DTYPE_FILE', '8.4', 779, '8.3'],
+            ['OCI_DTYPE_LOB', '8.4', 780, '8.3'],
+            ['OCI_DTYPE_ROWID', '8.4', 781, '8.3'],
+            ['OCI_D_FILE', '8.4', 782, '8.3'],
+            ['OCI_D_LOB', '8.4', 783, '8.3'],
+            ['OCI_D_ROWID', '8.4', 784, '8.3'],
+            ['OCI_FO_ABORT', '8.4', 785, '8.3'],
+            ['OCI_FO_BEGIN', '8.4', 786, '8.3'],
+            ['OCI_FO_END', '8.4', 787, '8.3'],
+            ['OCI_FO_ERROR', '8.4', 788, '8.3'],
+            ['OCI_FO_NONE', '8.4', 789, '8.3'],
+            ['OCI_FO_REAUTH', '8.4', 790, '8.3'],
+            ['OCI_FO_RETRY', '8.4', 791, '8.3'],
+            ['OCI_FO_SELECT', '8.4', 792, '8.3'],
+            ['OCI_FO_SESSION', '8.4', 793, '8.3'],
+            ['OCI_FO_TXNAL', '8.4', 794, '8.3'],
+            ['PSPELL_FAST', '8.4', 796, '8.3'],
+            ['PSPELL_NORMAL', '8.4', 797, '8.3'],
+            ['PSPELL_BAD_SPELLERS', '8.4', 798, '8.3'],
+            ['PSPELL_RUN_TOGETHER', '8.4', 799, '8.3'],
+            ['MYSQLI_SET_CHARSET_DIR', '8.4', 818, '8.3'],
+            ['MYSQLI_STMT_ATTR_PREFETCH_ROWS', '8.4', 819, '8.3'],
+            ['MYSQLI_CURSOR_TYPE_FOR_UPDATE', '8.4', 820, '8.3'],
+            ['MYSQLI_CURSOR_TYPE_SCROLLABLE', '8.4', 821, '8.3'],
+            ['MYSQLI_TYPE_INTERVAL', '8.4', 822, '8.3'],
         ];
     }
 
@@ -880,6 +1046,7 @@ class RemovedConstantsUnitTest extends BaseSniffTestCase
     {
         return [
             ['FILTER_SANITIZE_MAGIC_QUOTES', '7.4', '8.0', 'FILTER_SANITIZE_ADD_SLASHES', 137, '7.3'],
+            ['NIL', '8.1', '8.4', 'integer 0', 631, '8.0'],
         ];
     }
 
@@ -927,5 +1094,63 @@ class RemovedConstantsUnitTest extends BaseSniffTestCase
     {
         $file = $this->sniffFile(__FILE__, '5.0'); // Low version below the first deprecation.
         $this->assertNoViolation($file);
+    }
+
+    /**
+     * The T_BAD_CHARACTER constant is a special case
+     *
+     * @dataProvider dataTBadCharacter
+     *
+     * @param string $phpVersion  PHP version (or range) tot test with.
+     * @param bool   $shouldError If we expect to get an error or not from the sniff
+     *
+     * @return void
+     */
+    public function testTBadCharacter($phpVersion, $shouldError)
+    {
+        $line    = 140;
+        $message = 'The constant "T_BAD_CHARACTER" is not present in PHP versions 7.0 through 7.3';
+        $file    = $this->sniffFile(__FILE__, $phpVersion);
+
+        if ($shouldError) {
+            $this->assertError($file, $line, $message);
+        } else {
+            $this->assertNoViolation($file, $line);
+        }
+    }
+
+    /**
+     * Data provider
+     *
+     * @see testTBadCharacter
+     *
+     * @return array<array<string|bool>>
+     */
+    public static function dataTBadCharacter()
+    {
+        // This could be more elegantly written with a generator, but this project supports PHP v5.4 which is before generators were introduced (in PHP 5.5).
+        return [
+            ['5.6', false], // Last version before removal
+            ['7.0', true],  // Removed
+            ['7.1', true],  // Removed
+            ['7.2', true],  // Removed
+            ['7.3', true],  // Removed
+            ['7.4', false], // Added again
+
+            ['-5.6', false], // Before
+            ['-7.2', true],  // Inside
+            ['-8.2', true],  // After
+
+            ['5.4-', true],  // Before
+            ['7.2-', true],  // Inside
+            ['7.4-', false], // After
+
+            ['5.0-5.6', false], // Before
+            ['7.4-8.3', false], // After
+            ['5.0-8.3', true],  // Inside and both sides
+            ['5.0-7.2', true],  // Inside and before
+            ['7.0-7.3', true],  // Inside only
+            ['7.2-8.1', true],  // Inside and after
+        ];
     }
 }

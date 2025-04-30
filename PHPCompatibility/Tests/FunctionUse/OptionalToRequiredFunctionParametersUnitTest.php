@@ -26,6 +26,53 @@ class OptionalToRequiredFunctionParametersUnitTest extends BaseSniffTestCase
 {
 
     /**
+     * testOptionalRequiredParameterDeprecated
+     *
+     * @dataProvider dataOptionalRequiredParameterDeprecated
+     *
+     * @param string $functionName     Function name.
+     * @param string $parameterName    Parameter name.
+     * @param string $softRequiredFrom The last PHP version in which the parameter was still optional (deprecated).
+     * @param array  $lines            The line numbers in the test file which apply to this class.
+     * @param string $okVersion        A PHP version in which to test for no violation.
+     *
+     * @return void
+     */
+    public function testOptionalRequiredParameterDeprecated($functionName, $parameterName, $softRequiredFrom, $lines, $okVersion)
+    {
+        $file  = $this->sniffFile(__FILE__, $softRequiredFrom);
+        $error = "The \"{$parameterName}\" parameter for function {$functionName}() is missing. Passing this parameter is no longer optional. The optional nature of the parameter is deprecated since PHP {$softRequiredFrom}";
+        foreach ($lines as $line) {
+            $this->assertWarning($file, $line, $error);
+        }
+
+        $file = $this->sniffFile(__FILE__, $okVersion);
+        foreach ($lines as $line) {
+            $this->assertNoViolation($file, $line);
+        }
+    }
+
+    /**
+     * Data provider.
+     *
+     * @see testOptionalRequiredParameterDeprecated()
+     *
+     * @return array
+     */
+    public static function dataOptionalRequiredParameterDeprecated()
+    {
+        return [
+            ['stream_context_set_option', 'option_name', '8.4', [46], '8.3'],
+            ['stream_context_set_option', 'value', '8.4', [46], '8.3'],
+            ['pg_fetch_result', 'field', '8.4', [49], '8.3'],
+            ['pg_fetch_result', 'row', '8.4', [50], '8.3'],
+            ['pg_field_prtlen', 'field', '8.4', [52], '8.3'],
+            ['pg_field_is_null', 'field', '8.4', [54], '8.3'],
+        ];
+    }
+
+
+    /**
      * testOptionalRequiredParameterDeprecatedRemoved
      *
      * @dataProvider dataOptionalRequiredParameterDeprecatedRemoved
@@ -152,6 +199,10 @@ class OptionalToRequiredFunctionParametersUnitTest extends BaseSniffTestCase
             [21],
             [32],
             [43],
+            [45],
+            [48],
+            [51],
+            [53],
         ];
     }
 

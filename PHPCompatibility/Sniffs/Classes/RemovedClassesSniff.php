@@ -185,6 +185,27 @@ class RemovedClassesSniff extends Sniff
             'extension'   => 'oci8',
         ],
         */
+
+        'IMAP\Connection' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'OCICollection' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'OCILob' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'PSpell\Config' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'PSpell\Dictionary' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
     ];
 
     /**
@@ -412,7 +433,7 @@ class RemovedClassesSniff extends Sniff
     {
         // Strip off potential nullable indication.
         $typeString = \ltrim($typeString, '?');
-        $types      = \preg_split('`[|&]`', $typeString, -1, \PREG_SPLIT_NO_EMPTY);
+        $types      = \preg_split('`[|&()]`', $typeString, -1, \PREG_SPLIT_NO_EMPTY);
 
         if (empty($types) === true) {
             return;
@@ -423,12 +444,12 @@ class RemovedClassesSniff extends Sniff
             $type = \ltrim($type, '\\');
 
             if ($type === '') {
-                return;
+                continue;
             }
 
             $typeLc = \strtolower($type);
             if (isset($this->removedClasses[$typeLc]) === false) {
-                return;
+                continue;
             }
 
             $itemInfo = [

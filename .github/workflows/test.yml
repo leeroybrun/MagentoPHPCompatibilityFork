@@ -29,10 +29,10 @@ jobs:
 
     strategy:
       matrix:
-        php: ['5.4', '5.6', '7.0', '7.4', '8.0', '8.1', '8.2', '8.3']
+        php: ['5.4', '5.6', '7.0', '7.4', '8.0', '8.4', '8.5']
 
     name: "Lint: PHP ${{ matrix.php }}"
-    continue-on-error: ${{ matrix.php == '8.3' }}
+    continue-on-error: ${{ matrix.php == '8.5' }}
 
     steps:
       - name: Checkout code
@@ -53,17 +53,17 @@ jobs:
       # Install dependencies and handle caching in one go.
       # @link https://github.com/marketplace/actions/install-php-dependencies-with-composer
       - name: Install Composer dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
 
       - name: Lint against parse errors
-        if: ${{ matrix.php != '5.4' && matrix.php != '8.2' }}
+        if: ${{ matrix.php != '5.4' && matrix.php != '8.4' }}
         run: composer lint
 
       - name: Lint against parse errors
-        if: ${{ matrix.php == '5.4' || matrix.php == '8.2' }}
+        if: ${{ matrix.php == '5.4' || matrix.php == '8.4' }}
         run: composer lint -- --checkstyle | cs2pr
 
   #### TEST STAGE ####
@@ -86,13 +86,13 @@ jobs:
         # @link https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
         #
         # The matrix is set up so as not to duplicate the builds which are run for code coverage.
-        php: ['5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
+        php: ['5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3']
         phpcs_version: ['lowest', 'dev-master']
         experimental: [false]
 
         include:
           - php: '7.2'
-            phpcs_version: '^3.7.1'
+            phpcs_version: '^3.10.0'
             custom_ini: true
             experimental: false
 
@@ -101,7 +101,7 @@ jobs:
           #  phpcs_version: '4.0.x-dev@dev'
           #  experimental: true
 
-          - php: '8.3' # Nightly.
+          - php: '8.5' # Nightly.
             phpcs_version: 'dev-master'
             experimental: true
 
@@ -121,15 +121,15 @@ jobs:
           # Also set the "short_open_tag" ini to make sure specific conditions are tested.
           if [ ${{ matrix.custom_ini }} == "true" ]; then
             if [ "${{ matrix.phpcs_version }}" != "dev-master" ]; then
-              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1, short_open_tag=On' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1, short_open_tag=On' >> "$GITHUB_OUTPUT"
             else
-              echo 'PHP_INI=error_reporting=-1, display_errors=On, short_open_tag=On, zend.assertions=1' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=-1, display_errors=On, short_open_tag=On, zend.assertions=1' >> "$GITHUB_OUTPUT"
             fi
           else
             if [ "${{ matrix.phpcs_version }}" != "dev-master" ]; then
-              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1' >> "$GITHUB_OUTPUT"
             else
-              echo 'PHP_INI=error_reporting=-1, display_errors=On, zend.assertions=1' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=-1, display_errors=On, zend.assertions=1' >> "$GITHUB_OUTPUT"
             fi
           fi
 
@@ -144,19 +144,23 @@ jobs:
         if: ${{ matrix.phpcs_version != 'lowest' }}
         run: composer require squizlabs/php_codesniffer:"${{ matrix.phpcs_version }}" --no-update --no-scripts --no-interaction
 
+      - name: Enable creation of `composer.lock` file
+        if: ${{ matrix.phpcs_version == 'lowest' }}
+        run: composer config --unset lock
+
       # Install dependencies and handle caching in one go.
       # @link https://github.com/marketplace/actions/install-php-dependencies-with-composer
       - name: Install Composer dependencies - normal
-        if: ${{ matrix.php < 8.3 }}
-        uses: "ramsey/composer-install@v2"
+        if: ${{ matrix.php < 8.5 }}
+        uses: "ramsey/composer-install@v3"
         with:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
 
       # For the PHP "nightly", we need to install with ignore platform reqs as not all dependencies allow it yet.
       - name: Install Composer dependencies - with ignore platform
-        if: ${{ matrix.php >= 8.3 }}
-        uses: "ramsey/composer-install@v2"
+        if: ${{ matrix.php >= 8.5 }}
+        uses: "ramsey/composer-install@v3"
         with:
           composer-options: --ignore-platform-req=php
           custom-cache-suffix: $(date -u "+%Y-%m")
@@ -167,7 +171,7 @@ jobs:
 
       - name: Grab PHPUnit version
         id: phpunit_version
-        run: echo "VERSION=$(vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '\b[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '\b[0-9]+\.[0-9]+')" >> "$GITHUB_OUTPUT"
 
       - name: Run the unit tests (PHPUnit < 10)
         if: ${{ ! startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}
@@ -195,10 +199,10 @@ jobs:
       #   code conditions.
       matrix:
         include:
-          - php: '8.2'
+          - php: '8.4'
             phpcs_version: 'dev-master'
             custom_ini: true
-          - php: '8.2'
+          - php: '8.4'
             phpcs_version: 'lowest'
 
           - php: '5.4'
@@ -221,15 +225,15 @@ jobs:
           # Also set the "short_open_tag" ini to make sure specific conditions are tested.
           if [ ${{ matrix.custom_ini }} == "true" ]; then
             if [ "${{ matrix.phpcs_version }}" != "dev-master" ]; then
-              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1, short_open_tag=On' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1, short_open_tag=On' >> "$GITHUB_OUTPUT"
             else
-              echo 'PHP_INI=error_reporting=-1, display_errors=On, short_open_tag=On, zend.assertions=1' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=-1, display_errors=On, short_open_tag=On, zend.assertions=1' >> "$GITHUB_OUTPUT"
             fi
           else
             if [ "${{ matrix.phpcs_version }}" != "dev-master" ]; then
-              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=E_ALL & ~E_DEPRECATED, display_errors=On, zend.assertions=1' >> "$GITHUB_OUTPUT"
             else
-              echo 'PHP_INI=error_reporting=-1, display_errors=On, zend.assertions=1' >> $GITHUB_OUTPUT
+              echo 'PHP_INI=error_reporting=-1, display_errors=On, zend.assertions=1' >> "$GITHUB_OUTPUT"
             fi
           fi
 
@@ -244,8 +248,12 @@ jobs:
         if: ${{ matrix.phpcs_version != 'lowest' }}
         run: composer require squizlabs/php_codesniffer:"${{ matrix.phpcs_version }}" --no-update --no-scripts --no-interaction
 
+      - name: Enable creation of `composer.lock` file
+        if: ${{ matrix.phpcs_version == 'lowest' }}
+        run: composer config --unset lock
+
       - name: Install Composer dependencies
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v3"
         with:
           # Bust the cache at least once a month - output format: YYYY-MM.
           custom-cache-suffix: $(date -u "+%Y-%m")
@@ -256,7 +264,7 @@ jobs:
 
       - name: Grab PHPUnit version
         id: phpunit_version
-        run: echo "VERSION=$(vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '\b[0-9]+\.[0-9]+')" >> $GITHUB_OUTPUT
+        run: echo "VERSION=$(vendor/bin/phpunit --version | grep --only-matching --max-count=1 --extended-regexp '\b[0-9]+\.[0-9]+')" >> "$GITHUB_OUTPUT"
 
       - name: "DEBUG: Show grabbed version"
         run: echo ${{ steps.phpunit_version.outputs.VERSION }}
@@ -278,26 +286,14 @@ jobs:
         if: ${{ startsWith( steps.phpunit_version.outputs.VERSION, '10.' ) }}
         run: vendor/bin/phpunit -c phpunit10.xml.dist --coverage-cache ./build/phpunit-cache
 
-      # PHP Coveralls v2 (which supports GH Actions) has a PHP 5.5 minimum, so switch the PHP version.
-      - name: Switch to PHP latest
-        if: ${{ success() && matrix.php == '5.4' }}
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 'latest'
-          coverage: none
-
-      # Global install is used to prevent a conflict with the local composer.lock.
-      - name: Install Coveralls
-        if: ${{ success() }}
-        run: composer global require php-coveralls/php-coveralls:"^2.6.0" --no-interaction
-
       - name: Upload coverage results to Coveralls
         if: ${{ success() }}
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
-          COVERALLS_PARALLEL: true
-          COVERALLS_FLAG_NAME: php-${{ matrix.php }}-phpcs-${{ matrix.phpcs_version }}
-        run: php-coveralls -v -x build/logs/clover.xml
+        uses: coverallsapp/github-action@v2
+        with:
+          format: clover
+          file: build/logs/clover.xml
+          flag-name: php-${{ matrix.php }}-phpcs-${{ matrix.phpcs_version }}
+          parallel: true
 
   coveralls-finish:
     needs: coverage
@@ -310,5 +306,4 @@ jobs:
       - name: Coveralls Finished
         uses: coverallsapp/github-action@v2
         with:
-          github-token: ${{ secrets.COVERALLS_TOKEN }}
           parallel-finished: true

@@ -333,12 +333,14 @@ class RemovedIniDirectivesSniff extends AbstractFunctionCallParameterSniff
             '5.4' => true,
         ],
         'session.bug_compat_42' => [
-            '5.3' => false,
-            '5.4' => true,
+            '5.3'       => false,
+            '5.4'       => true,
+            'extension' => 'session',
         ],
         'session.bug_compat_warn' => [
-            '5.3' => false,
-            '5.4' => true,
+            '5.3'       => false,
+            '5.4'       => true,
+            'extension' => 'session',
         ],
         'y2k_compliance' => [
             '5.3' => false,
@@ -533,16 +535,20 @@ class RemovedIniDirectivesSniff extends AbstractFunctionCallParameterSniff
             'extension' => 'mcrypt',
         ],
         'session.entropy_file' => [
-            '7.1' => true,
+            '7.1'       => true,
+            'extension' => 'session',
         ],
         'session.entropy_length' => [
-            '7.1' => true,
+            '7.1'       => true,
+            'extension' => 'session',
         ],
         'session.hash_function' => [
-            '7.1' => true,
+            '7.1'       => true,
+            'extension' => 'session',
         ],
         'session.hash_bits_per_character' => [
-            '7.1' => true,
+            '7.1'       => true,
+            'extension' => 'session',
         ],
 
         'mbstring.func_overload' => [
@@ -656,6 +662,7 @@ class RemovedIniDirectivesSniff extends AbstractFunctionCallParameterSniff
         ],
         'oci8.old_oci_close_semantics' => [
             '8.1'       => false,
+            '8.4'       => true,
             'extension' => 'oci8',
         ],
 
@@ -687,6 +694,55 @@ class RemovedIniDirectivesSniff extends AbstractFunctionCallParameterSniff
         'opcache.consistency_checks' => [
             '8.3'       => true,
             'extension' => 'opcache',
+        ],
+
+        'imap.enable_insecure_rsh' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'oci8.connection_class' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.default_prefetch' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.events' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.max_persistent' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.persistent_timeout' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.ping_interval' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.prefetch_lob_size' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.privileged_connect' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci8.statement_cache_size' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'session.sid_length' => [
+            '8.4'       => false,
+            'extension' => 'session',
+        ],
+        'session.sid_bits_per_character' => [
+            '8.4'       => false,
+            'extension' => 'session',
         ],
     ];
 

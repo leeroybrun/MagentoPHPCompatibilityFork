@@ -214,6 +214,39 @@ class NewKeywordsUnitTest extends BaseSniffTestCase
             [75],
             [76],
             [78],
+            [260],
+        ];
+    }
+
+    /**
+     * Test against false positives (duplicates) for a multi-token yield from keyword.
+     *
+     * @dataProvider dataYieldFromNoFalsePositives
+     *
+     * @param int $line The line number.
+     *
+     * @return void
+     */
+    public function testYieldFromNoFalsePositives($line)
+    {
+        $file = $this->sniffFile(__FILE__, '5.6');
+        $this->assertNoViolation($file, $line);
+    }
+
+    /**
+     * Data provider.
+     *
+     * @see testYieldFrom()
+     *
+     * @return array
+     */
+    public static function dataYieldFromNoFalsePositives()
+    {
+        return [
+            [77],
+            [261],
+            [262],
+            [263],
         ];
     }
 
@@ -623,7 +656,7 @@ class NewKeywordsUnitTest extends BaseSniffTestCase
          * not be reported.
          */
         $file = $this->sniffFile(__FILE__, '5.2');
-        $this->assertNoViolation($file, 260);
+        $this->assertNoViolation($file, 269);
     }
 
 

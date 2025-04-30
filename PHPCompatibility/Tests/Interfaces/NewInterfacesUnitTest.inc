@@ -1,5 +1,5 @@
 <?php
-
+use Countable;
 class MyCountable implements Countable {}
 class MyOuterIterator implements OuterIterator {}
 class MyRecursiveIterator implements RecursiveIterator {}
@@ -198,6 +198,19 @@ class MyDom implements DOMChildNode, DOMParentNode {}
 function ExpectsEnumParams(UnitEnum $enum1, BackedEnum $enum2) {}
 
 function useRandomExtension( Random\Engine $paramA, Random\CryptoSafeEngine $paramB ) {}
+
+function CheckAllTypeParts(
+    NotATarget|Stringable $a
+) : NotATarget|DOMParentNode {}
+
+// Test support for PHP 8.2 DNF types.
+class DNFTypes {
+    public function paramTypeA(NotATarget&AlsoNotATarget $okay) {}
+
+    public true|(DOMChildNode&DOMParentNode) $property;
+    public function paramTypeB((UnitEnum&BackedEnum)|string $param) {}
+    public function returnType($param) : (Stringable&DOMChildNode)|(A&B) {}
+}
 
 // Test parse error/live coding.
 // This MUST be the last test in the file!

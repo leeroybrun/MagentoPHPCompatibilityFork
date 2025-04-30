@@ -41,3 +41,14 @@ openssl_seal( $data, $sealed_data, iv: $iv, encrypted_keys: $encrypted_keys, pub
 
 // Prevent false positives on PHP 8.0+ nullsafe method calls.
 $obj?->mktime();
+
+stream_context_set_option($context, $wrapper, $option_name, $value);
+stream_context_set_option($context, $options); // Error x 2.
+
+pg_fetch_result($result, $row, $field);
+pg_fetch_result($result, $field); // Error.
+pg_fetch_result($result, field: $field); // Error.
+pg_field_prtlen($result, $row, $field);
+pg_field_prtlen($result, $field); // Error.
+pg_field_is_null($result, $row, $field);
+pg_field_is_null($result, $field); // Error.

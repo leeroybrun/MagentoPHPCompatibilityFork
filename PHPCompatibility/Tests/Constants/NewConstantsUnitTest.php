@@ -1433,7 +1433,6 @@ class NewConstantsUnitTest extends BaseSniffTestCase
             ['PASSWORD_ARGON2_PROVIDER', '7.3', 864, '7.4'],
             ['PHP_WINDOWS_EVENT_CTRL_C', '7.3', 830, '7.4'],
             ['PHP_WINDOWS_EVENT_CTRL_BREAK', '7.3', 831, '7.4'],
-            ['T_BAD_CHARACTER', '7.3', 862, '7.4'],
             ['T_COALESCE_EQUAL', '7.3', 1048, '7.4'],
             ['T_FN', '7.3', 1049, '7.4'],
             ['TIDY_TAG_ARTICLE', '7.3', 832, '7.4'],
@@ -1634,10 +1633,6 @@ class NewConstantsUnitTest extends BaseSniffTestCase
             ['PGSQL_SHOW_CONTEXT_NEVER', '8.2', 1561, '8.3'],
             ['PGSQL_SHOW_CONTEXT_ERRORS', '8.2', 1562, '8.3'],
             ['PGSQL_SHOW_CONTEXT_ALWAYS', '8.2', 1563, '8.3'],
-            ['PGSQL_PIPELINE_SYNC', '8.2', 1564, '8.3'],
-            ['PGSQL_PIPELINE_ON', '8.2', 1565, '8.3'],
-            ['PGSQL_PIPELINE_OFF', '8.2', 1566, '8.3'],
-            ['PGSQL_PIPELINE_ABORTED', '8.2', 1567, '8.3'],
             ['CURLINFO_CAPATH', '8.2', 1568, '8.3'],
             ['CURLINFO_CAINFO', '8.2', 1569, '8.3'],
             ['CURLOPT_MIME_OPTIONS', '8.2', 1570, '8.3'],
@@ -1684,6 +1679,70 @@ class NewConstantsUnitTest extends BaseSniffTestCase
             ['TCP_REPAIR', '8.2', 1610, '8.3'],
             ['SO_REUSEPORT_LB', '8.2', 1611, '8.3'],
             ['IP_BIND_ADDRESS_NO_PORT', '8.2', 1612, '8.3'],
+
+            ['XML_OPTION_PARSE_HUGE', '8.3', 1615, '8.4'],
+            ['CURL_HTTP_VERSION_3', '8.3', 1616, '8.4'],
+            ['CURL_HTTP_VERSION_3ONLY', '8.3', 1617, '8.4'],
+            ['POSIX_SC_CHILD_MAX', '8.3', 1618, '8.4'],
+            ['POSIX_SC_CLK_TCK', '8.3', 1619, '8.4'],
+            ['PGSQL_TUPLES_CHUNK', '8.3', 1620, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS128L_KEYBYTES', '8.3', 1621, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS128L_NSECBYTES', '8.3', 1622, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS128L_NPUBBYTES', '8.3', 1623, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS128L_ABYTES', '8.3', 1624, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS256_KEYBYTES', '8.3', 1625, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS256_NSECBYTES', '8.3', 1626, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS256_NPUBBYTES', '8.3', 1627, '8.4'],
+            ['SODIUM_CRYPTO_AEAD_AEGIS256_ABYTES', '8.3', 1628, '8.4'],
+            ['PHP_OUTPUT_HANDLER_PROCESSED', '8.3', 1629, '8.4'],
+            ['PHP_SBINDIR', '8.3', 1630, '8.4'],
+            ['LDAP_OPT_X_TLS_PROTOCOL_MAX', '8.3', 1631, '8.4'],
+            ['LDAP_OPT_X_TLS_PROTOCOL_TLS1_3', '8.3', 1632, '8.4'],
+            ['LIBXML_RECOVER', '8.3', 1633, '8.4'],
+            ['LIBXML_NO_XXE', '8.3', 1634, '8.4'],
+            ['X509_PURPOSE_OCSP_HELPER', '8.3', 1635, '8.4'],
+            ['X509_PURPOSE_TIMESTAMP_SIGN', '8.3', 1636, '8.4'],
+            ['SIGCKPT', '8.3', 1637, '8.4'],
+            ['SIGCKPTEXIT', '8.3', 1638, '8.4'],
+            ['WEXITED', '8.3', 1639, '8.4'],
+            ['WSTOPPED', '8.3', 1640, '8.4'],
+            ['WNOWAIT', '8.3', 1641, '8.4'],
+            ['P_ALL', '8.3', 1642, '8.4'],
+            ['P_PID', '8.3', 1643, '8.4'],
+            ['P_PGID', '8.3', 1644, '8.4'],
+            ['P_PIDFD', '8.3', 1645, '8.4'],
+            ['P_UID', '8.3', 1646, '8.4'],
+            ['P_GID', '8.3', 1647, '8.4'],
+            ['P_SID', '8.3', 1648, '8.4'],
+            ['P_JAILID', '8.3', 1649, '8.4'],
+            ['SO_EXCLUSIVEADDRUSE', '8.3', 1650, '8.4'],
+            ['SOCK_CONN_DGRAM', '8.3', 1651, '8.4'],
+            ['SOCK_DCCP', '8.3', 1652, '8.4'],
+            ['TCP_SYNCNT', '8.3', 1653, '8.4'],
+            ['SO_EXCLBIND', '8.3', 1654, '8.4'],
+            ['SO_NOSIGPIPE', '8.3', 1655, '8.4'],
+            ['SO_LINGER_SEC', '8.3', 1656, '8.4'],
+            ['IP_PORTRANGE', '8.3', 1657, '8.4'],
+            ['IP_PORTRANGE_DEFAULT', '8.3', 1658, '8.4'],
+            ['IP_PORTRANGE_HIGH', '8.3', 1659, '8.4'],
+            ['IP_PORTRANGE_LOW', '8.3', 1660, '8.4'],
+            ['SOCK_NONBLOCK', '8.3', 1661, '8.4'],
+            ['SOCK_CLOEXEC', '8.3', 1662, '8.4'],
+            ['CURLOPT_TCP_KEEPCNT', '8.3', 1663, '8.4'],
+            ['CURLOPT_SERVER_RESPONSE_TIMEOUT', '8.3', 1664, '8.4'],
+            ['MYSQLI_TYPE_VECTOR', '8.3', 1665, '8.4'],
+            ['SO_BINDTOIFINDEX', '8.3', 1666, '8.4'],
+            ['CURLOPT_PREREQFUNCTION', '8.3', 1667, '8.4'],
+            ['CURL_PREREQFUNC_OK', '8.3', 1668, '8.4'],
+            ['CURL_PREREQFUNC_ABORT', '8.3', 1669, '8.4'],
+            ['CURLOPT_DEBUGFUNCTION', '8.3', 1670, '8.4'],
+            ['CURLINFO_TEXT', '8.3', 1671, '8.4'],
+            ['CURLINFO_HEADER_IN', '8.3', 1672, '8.4'],
+            ['CURLINFO_DATA_IN', '8.3', 1673, '8.4'],
+            ['CURLINFO_DATA_OUT', '8.3', 1674, '8.4'],
+            ['CURLINFO_SSL_DATA_OUT', '8.3', 1675, '8.4'],
+            ['CURLINFO_SSL_DATA_IN', '8.3', 1676, '8.4'],
+            ['CURLINFO_POSTTRANSFER_TIME_T', '8.3', 1677, '8.4'],
         ];
     }
 
@@ -1728,5 +1787,63 @@ class NewConstantsUnitTest extends BaseSniffTestCase
     {
         $file = $this->sniffFile(__FILE__, '99.0'); // High version beyond newest addition.
         $this->assertNoViolation($file);
+    }
+
+    /**
+     * The T_BAD_CHARACTER constant is a special case
+     *
+     * @dataProvider dataTBadCharacter
+     *
+     * @param string $phpVersion  PHP version (or range) tot test with.
+     * @param bool   $shouldError If we expect to get an error or not from the sniff
+     *
+     * @return void
+     */
+    public function testTBadCharacter($phpVersion, $shouldError)
+    {
+        $line    = 862;
+        $message = 'The constant "T_BAD_CHARACTER" is not present in PHP versions 7.0 through 7.3';
+        $file    = $this->sniffFile(__FILE__, $phpVersion);
+
+        if ($shouldError) {
+            $this->assertError($file, $line, $message);
+        } else {
+            $this->assertNoViolation($file, $line);
+        }
+    }
+
+    /**
+     * Data provider
+     *
+     * @see testTBadCharacter
+     *
+     * @return array<array<string|bool>>
+     */
+    public static function dataTBadCharacter()
+    {
+        // This could be more elegantly written with a generator, but this project supports PHP v5.4 which is before generators were introduced (in PHP 5.5).
+        return [
+            ['5.6', false], // Last version before removal
+            ['7.0', true],  // Removed
+            ['7.1', true],  // Removed
+            ['7.2', true],  // Removed
+            ['7.3', true],  // Removed
+            ['7.4', false], // Added again
+
+            ['-5.6', false], // Before
+            ['-7.2', true],  // Inside
+            ['-8.2', true],  // After
+
+            ['5.4-', true],  // Before
+            ['7.2-', true],  // Inside
+            ['7.4-', false], // After
+
+            ['5.0-5.6', false], // Before
+            ['7.4-8.3', false], // After
+            ['5.0-8.3', true],  // Inside and both sides
+            ['5.0-7.2', true],  // Inside and before
+            ['7.0-7.3', true],  // Inside only
+            ['7.2-8.1', true],  // Inside and after
+        ];
     }
 }

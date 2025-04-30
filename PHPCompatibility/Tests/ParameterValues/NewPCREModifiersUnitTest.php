@@ -67,6 +67,7 @@ class NewPCREModifiersUnitTest extends BaseSniffTestCase
         return [
             ['J', '7.1', [3, 4, 10, 17, 19, 25, 43, 50], '7.2'],
             ['n', '8.1', [53, 54, 55], '8.2'],
+            ['r', '8.3', [58, 59, 60], '8.4'],
         ];
     }
 
@@ -99,6 +100,8 @@ class NewPCREModifiersUnitTest extends BaseSniffTestCase
             [18],
             [28],
             [49],
+            [63],
+            [64],
         ];
     }
 

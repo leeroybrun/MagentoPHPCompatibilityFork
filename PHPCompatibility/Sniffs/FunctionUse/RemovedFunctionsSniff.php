@@ -2996,249 +2996,249 @@ class RemovedFunctionsSniff extends Sniff
             'extension'   => 'mcrypt',
         ],
         'ocibindbyname' => [
-            '5.4'         => false,
-            'alternative' => 'oci_bind_by_name()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicancel' => [
-            '5.4'         => false,
-            'alternative' => 'oci_cancel()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicloselob' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::close() / OCILob::close() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicollappend' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::append() / OCICollection::append() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicollassign' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::assign() / OCICollection::assign() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicollassignelem' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::assignElem() / OCICollection::assignElem() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicollgetelem' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::getElem() / OCICollection::getElem() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicollmax' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::max() / OCICollection::max() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicollsize' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::size() / OCICollection::size() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolltrim' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::trim() / OCICollection::trim() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumnisnull' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_is_null()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumnname' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_name()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumnprecision' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_precision()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumnscale' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_scale()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumnsize' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_size()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumntype' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_type()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicolumntyperaw' => [
-            '5.4'         => false,
-            'alternative' => 'oci_field_type_raw()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocicommit' => [
-            '5.4'         => false,
-            'alternative' => 'oci_commit()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocidefinebyname' => [
-            '5.4'         => false,
-            'alternative' => 'oci_define_by_name()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocierror' => [
-            '5.4'         => false,
-            'alternative' => 'oci_error()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociexecute' => [
-            '5.4'         => false,
-            'alternative' => 'oci_execute()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocifetch' => [
-            '5.4'         => false,
-            'alternative' => 'oci_fetch()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocifetchinto' => [
             '5.4'       => false,
+            '8.4'       => true,
             'extension' => 'oci8',
         ],
         'ocifetchstatement' => [
-            '5.4'         => false,
-            'alternative' => 'oci_fetch_all()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocifreecollection' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Collection::free() / OCICollection::free() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocifreecursor' => [
-            '5.4'         => false,
-            'alternative' => 'oci_free_statement()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocifreedesc' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::free() / OCILob::free() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocifreestatement' => [
-            '5.4'         => false,
-            'alternative' => 'oci_free_statement()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociinternaldebug' => [
-            '5.4'         => false,
-            '8.0'         => true,
-            'alternative' => 'oci_internal_debug() (PHP < 8.0)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.0'       => true,
+            'extension' => 'oci8',
         ],
         'ociloadlob' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::load() / OCILob::load() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocilogoff' => [
-            '5.4'         => false,
-            'alternative' => 'oci_close()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocilogon' => [
-            '5.4'         => false,
-            'alternative' => 'oci_connect()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocinewcollection' => [
-            '5.4'         => false,
-            'alternative' => 'oci_new_collection()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocinewcursor' => [
-            '5.4'         => false,
-            'alternative' => 'oci_new_cursor()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocinewdescriptor' => [
-            '5.4'         => false,
-            'alternative' => 'oci_new_descriptor()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocinlogon' => [
-            '5.4'         => false,
-            'alternative' => 'oci_new_connect()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocinumcols' => [
-            '5.4'         => false,
-            'alternative' => 'oci_num_fields()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociparse' => [
-            '5.4'         => false,
-            'alternative' => 'oci_parse()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociplogon' => [
-            '5.4'         => false,
-            'alternative' => 'oci_pconnect()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociresult' => [
-            '5.4'         => false,
-            'alternative' => 'oci_result()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocirollback' => [
-            '5.4'         => false,
-            'alternative' => 'oci_rollback()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocirowcount' => [
-            '5.4'         => false,
-            'alternative' => 'oci_num_rows()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocisavelob' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::save() / OCILob::save() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocisavelobfile' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::import() / OCILob::import() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociserverversion' => [
-            '5.4'         => false,
-            'alternative' => 'oci_server_version()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocisetprefetch' => [
-            '5.4'         => false,
-            'alternative' => 'oci_set_prefetch()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ocistatementtype' => [
-            '5.4'         => false,
-            'alternative' => 'oci_statement_type()',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociwritelobtofile' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::export() / OCILob::export() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'ociwritetemporarylob' => [
-            '5.4'         => false,
-            'alternative' => 'OCI-Lob::writeTemporary() / OCILob::writeTemporary() (PHP 8+)',
-            'extension'   => 'oci8',
+            '5.4'       => false,
+            '8.4'       => true,
+            'extension' => 'oci8',
         ],
         'mysqli_get_cache_stats' => [
             '5.4'       => true,
@@ -5073,6 +5073,626 @@ class RemovedFunctionsSniff extends Sniff
 
         'assert_options' => [
             '8.3' => false,
+        ],
+
+        'imap_8bit' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_alerts' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_append' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_base64' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_binary' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_body' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_bodystruct' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_check' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_clearflag_full' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_close' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_create' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_createmailbox' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_delete' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_deletemailbox' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_errors' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_expunge' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_fetch_overview' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_fetchbody' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_fetchheader' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_fetchmime' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_fetchstructure' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_fetchtext' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_gc' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_get_quota' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_get_quotaroot' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_getacl' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_getmailboxes' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_getsubscribed' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_headerinfo' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_headers' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_is_open' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_last_error' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_list' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_listmailbox' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_listscan' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_listsubscribed' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_lsub' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mail' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mail_compose' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mail_copy' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mail_move' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mailboxmsginfo' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mime_header_decode' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_msgno' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_mutf7_to_utf8' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_num_msg' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_num_recent' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_open' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_ping' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_qprint' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_rename' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_renamemailbox' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_reopen' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_rfc822_parse_adrlist' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_rfc822_parse_headers' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_rfc822_write_address' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_savebody' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_scan' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_scanmailbox' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_search' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_set_quota' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_setacl' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_setflag_full' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_sort' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_status' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_subscribe' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_thread' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_timeout' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_uid' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_undelete' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_unsubscribe' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_utf7_decode' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_utf7_encode' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_utf8' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'imap_utf8_to_mutf7' => [
+            '8.4'       => true,
+            'extension' => 'imap',
+        ],
+        'intlcal_set' => [
+            '8.4'         => false,
+            'alternative' => 'IntlCalendar::setDate() or IntlCalendar::setDateTime()',
+            'extension'   => 'intl',
+        ],
+        'intlgregcal_create_instance' => [
+            '8.4'         => false,
+            'alternative' => 'IntlGregorianCalendar::createFromDate() or IntlGregorianCalendar::createFromDateTime()',
+            'extension'   => 'intl',
+        ],
+        'mysqli_kill' => [
+            '8.4'         => false,
+            'alternative' => 'a KILL CONNECTION/QUERY SQL statement',
+            'extension'   => 'mysqli',
+        ],
+        'mysqli_ping' => [
+            '8.4'         => false,
+            'alternative' => 'exception catching on normal queries or, for long running processes, sending a "DO 1" query',
+            'extension'   => 'mysqli',
+        ],
+        'mysqli_refresh' => [
+            '8.4'         => false,
+            'alternative' => 'a FLUSH SQL statement',
+            'extension'   => 'mysqli',
+        ],
+        'oci_bind_array_by_name' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_bind_by_name' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_cancel' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_client_version' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_close' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_commit' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_connect' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_define_by_name' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_error' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_execute' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_fetch' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_fetch_all' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_fetch_array' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_fetch_assoc' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_fetch_object' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_fetch_row' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_is_null' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_name' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_precision' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_scale' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_size' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_type' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_field_type_raw' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_free_descriptor' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_free_statement' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_get_implicit_resultset' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_lob_copy' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_lob_is_equal' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_new_collection' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_new_connect' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_new_cursor' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_new_descriptor' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_num_fields' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_num_rows' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_parse' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_password_change' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_pconnect' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_register_taf_callback' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_result' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_rollback' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_server_version' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_action' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_call_timeout' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_client_identifier' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_client_info' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_db_operation' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_edition' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_module_name' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_prefetch' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_set_prefetch_lob' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_statement_type' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'oci_unregister_taf_callback' => [
+            '8.4'       => true,
+            'extension' => 'oci8',
+        ],
+        'pspell_add_to_personal' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_add_to_session' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_check' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_clear_session' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_create' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_data_dir' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_dict_dir' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_ignore' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_mode' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_personal' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_repl' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_runtogether' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_config_save_repl' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_new' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_new_config' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_new_personal' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_save_wordlist' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_store_replacement' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'pspell_suggest' => [
+            '8.4'       => true,
+            'extension' => 'pspell',
+        ],
+        'lcg_value' => [
+            '8.4'         => false,
+            'alternative' => 'Random\Randomizer::getFloat()',
+            'extension'   => 'random',
+        ],
+        'xml_set_object' => [
+            '8.4'         => false,
+            'alternative' => 'a fully formed callback in a xml_set_*_handler() function',
+            'extension'   => 'xml',
         ],
     ];
 

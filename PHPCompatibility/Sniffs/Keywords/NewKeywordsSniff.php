@@ -219,7 +219,7 @@ class NewKeywordsSniff extends Sniff
      * @param int                         $stackPtr  The position of the current token in
      *                                               the stack passed in $tokens.
      *
-     * @return void
+     * @return void|int Void or a stack pointer to skip forward.
      */
     public function process(File $phpcsFile, $stackPtr)
     {
@@ -246,7 +246,8 @@ class NewKeywordsSniff extends Sniff
          *
          * Prior to PHP 8.3, `yield from` with a comment between the keywords would be tokenized
          * as `T_YIELD`, `T_COMMENT`, T_STRING`.
-         * As of PHP 8.3, this is correctly tokenized as `T_YIELD_FROM`.
+         * As of PHP 8.3, this is tokenized as `T_YIELD_FROM` in PHP.
+         * As of PHPCS 3.11.0, PHPCS polyfills the tokenization to be consistent across PHP versions.
          */
         if ($tokenType === 'T_YIELD') {
             $nextToken = $phpcsFile->findNext(Tokens::$emptyTokens, ($end + 1), null, true);
@@ -257,11 +258,22 @@ class NewKeywordsSniff extends Sniff
                 $end       = $nextToken;
             }
             unset($nextToken);
-        }
+        } elseif ($tokenType === 'T_YIELD_FROM'
+            && preg_match('`yield\s+from`i', $tokens[$stackPtr]['content']) !== 1
+        ) {
+            // Find the end of potentially multi-line/multi-token "yield from" expressions.
+            for ($i = ($stackPtr + 1); $i < $phpcsFile->numTokens; $i++) {
+                if ($tokens[$i]['code'] === \T_YIELD_FROM && \strtolower(\trim($tokens[$i]['content'])) === 'from') {
+                    $end = ($i + 1);
+                    break;
+                }
 
-        if ($tokenType === 'T_YIELD_FROM' && $tokens[($stackPtr - 1)]['type'] === 'T_YIELD_FROM') {
-            // Multi-line "yield from", no need to report it twice.
-            return;
+                if (isset(Tokens::$emptyTokens[$tokens[$i]['code']]) === false && $tokens[$i]['code'] !== \T_YIELD_FROM) {
+                    // Shouldn't be possible. Just to be on the safe side.
+                    break; // @codeCoverageIgnore
+                }
+            }
+            unset($i);
         }
 
         if (isset($this->newKeywords[$tokenType]) === false) {
@@ -275,7 +287,7 @@ class NewKeywordsSniff extends Sniff
             && isset(Collections::objectOperators()[$tokens[$prevToken]['code']]) === true
         ) {
             // Class property of the same name as one of the keywords. Ignore.
-            return;
+            return ($end + 1);
         }
 
         // Skip attempts to use keywords as functions or class names - the former
@@ -296,7 +308,7 @@ class NewKeywordsSniff extends Sniff
             if (isset($this->newKeywords[$tokenType]['callback'])
                 && \call_user_func($this->newKeywords[$tokenType]['callback'], $phpcsFile, $stackPtr) === true
             ) {
-                return;
+                return ($end + 1);
             }
 
             $itemInfo = [
@@ -304,6 +316,8 @@ class NewKeywordsSniff extends Sniff
             ];
             $this->handleFeature($phpcsFile, $stackPtr, $itemInfo);
         }
+
+        return ($end + 1);
     }
 
 

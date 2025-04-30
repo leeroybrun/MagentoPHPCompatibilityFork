@@ -483,3 +483,80 @@ class MyRandom extends \Random\Randomizer {
         }
     }
 }
+
+function CheckAllTypeParts(
+    NotATarget|XMLReader $a
+) : NotATarget|ReflectionType {}
+
+// Test support for PHP 8.2 DNF types.
+class DNFTypes {
+    public function paramTypeA((NotATarget&AlsoNotATarget)|string $okay) {}
+
+    public null|(IntlPartsIterator&IntlIterator) $property;
+    public function paramTypeB((\ReflectionClassConstant&\ReflectionNamedType)|int $param) {}
+    public function returnType($param) : (\FFI\CData&\FFI\CType)|SomethingElse {}
+}
+
+class MyCurl {
+    public CurlHandle $handle1;
+    public readonly CurlMultiHandle $handle2;
+    readonly public CurlShareHandle $handle3;
+}
+
+function enchantMe(EnchantBroker|EnchantDictionary $param) {}
+function updateImage(GdImage $image) {}
+
+class MyOpenSSL {
+    function getCert(): OpenSSLCertificate {}
+    function requestSign(): OpenSSLCertificateSigningRequest {}
+    function getAsymKey(): OpenSSLAsymmetricKey {}
+}
+
+function my_shmop(Shmop $param) {}
+function getAddress(Socket $param): AddressInfo {}
+function semaphoreQueue(SysvMessageQueue $param) {}
+function my_semaphore(SysvSemaphore $param) {}
+function manage_sys_memory(SysvSharedMemory $param) {}
+function parse_xml(): XMLParser {}
+
+class Zipper {
+    private InflateContext $inflate;
+    private DeflateContext $deflate;
+}
+
+function getFile(FTP\Connection $connection) {}
+function changeFont(GdFont $font) {}
+function mailMe(): IMAP\Connection {}
+function somethingSomethingLdap(
+    \LDAP\Connection $connection,
+    \LDAP\Result $result
+) : \LDAP\ResultEntry {}
+
+function myPgSql(
+    PgSql\Connection $connect,
+    PgSql\Lob $result
+) : PgSql\Result {}
+
+function my_pspell(
+    PSpell\Config $config,
+    PSpell\Dictionary $dictionary,
+) {}
+
+function dba_get(Dba\Connection $connect) {}
+function odbc_get(Odbc\Connection $connect): Odbc\Result {}
+function soapy_goodness(Soap\Url $url): Soap\Sdl {}
+function accessStreamBucket(StreamBucket $bucket) {}
+
+$db = new Pdo\DbLib();
+$anon = new class extends \Pdo\Firebird {
+    public Pdo\Mysql $prop;
+    public function ParamType(\Pdo\Odbc $param) {}
+    public function ReturnType( $a ) : Pdo\Pgsql {}
+};
+\Pdo\Sqlite::CLASS_CONSTANT;
+
+try {
+} catch(RequestParseBodyException) {}
+
+function mycalc( BcMath\Number $number) {}
+$c = new ReflectionConstant($name);
